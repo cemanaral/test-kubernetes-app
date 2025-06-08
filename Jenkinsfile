@@ -19,7 +19,7 @@ pipeline {
         stage('Argocd deploy') {
             steps {
                 script {
-                    git branch: 'main', credentialsId: 'github-ssh-private-key', url: 'ssh://github.com/cemanaral/test-kubernetes-argocd.git'
+                    git branch: 'main', credentialsId: 'github-ssh-private-key', url: 'ssh://git@github.com/cemanaral/test-kubernetes-argocd.git'
                     sh '''
                         cat << EOF > "valuesOverrides/values.yaml"
 image:
