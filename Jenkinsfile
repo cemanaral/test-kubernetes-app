@@ -19,7 +19,7 @@ pipeline {
         stage('Argocd deploy') {
             steps {
                 script {
-                    sh 'git clone git@github.com:cemanaral/test-kubernetes-argocd.git'
+                    git branch: 'main', credentialsId: 'github-ssh-private-key', url: 'https://github.com/cemanaral/test-kubernetes-argocd.git'
                 }
             }
         }
