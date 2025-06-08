@@ -31,8 +31,7 @@ EOF
                         git config --global user.name "Jenkins CI/CD"
                         git add valuesOverrides/values.yaml
                         git commit -m "Update image tag to $GIT_COMMIT"
-                        git remote add origin git@github.com:cemanaral/test-kubernetes-argocd.git
-                        git push origin main
+                        git push --set-upstream origin main
                     '''
 
                 }
