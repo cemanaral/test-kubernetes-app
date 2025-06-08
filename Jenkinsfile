@@ -5,6 +5,7 @@ pipeline {
 
     options {
         disableConcurrentBuilds(abortPrevious: true)
+        quietPeriod(30)
     }
     stages {
         stage('Docker build') {
