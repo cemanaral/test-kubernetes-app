@@ -20,6 +20,7 @@ pipeline {
             steps {
                 script {
                     git branch: 'main', credentialsId: 'github-ssh-private-key', url: 'ssh://github.com/cemanaral/test-kubernetes-argocd.git'
+                    sh 'ls -laht'
                 }
             }
         }
