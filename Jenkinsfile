@@ -31,7 +31,7 @@ EOF
                         git config --global user.name "Jenkins CI/CD"
                         git add valuesOverrides/values.yaml
                         git commit -m "Update image tag to $GIT_COMMIT"
-                        git push
+                        git push --set-upstream origin main
                     '''
 
                 }
