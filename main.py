@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World! v1'
+    return 'Hello, World! v2'
 
 @app.route('/health')
 def health():
