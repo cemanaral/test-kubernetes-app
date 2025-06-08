@@ -31,7 +31,7 @@ EOF
                         sh '''
                             git config --global user.email "jenkins@cemanaral.com"
                             git config --global user.name "Jenkins CI/CD"
-                            git add valuesOverrides/values.yaml
+                            git add valuesOverrides/app-values.yaml
                             git commit -m "Update image tag to $GIT_COMMIT"
                             git -c core.sshCommand="ssh -i $PK" push --set-upstream origin main
                         '''
