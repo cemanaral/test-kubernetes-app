@@ -26,14 +26,16 @@ image:
   tag: $GIT_COMMIT
 EOF
                     '''
-                    sh '''
-                        git config --global user.email "jenkins@jenkins.com"
-                        git config --global user.name "Jenkins CI/CD"
-                        git add valuesOverrides/values.yaml
-                        git commit -m "Update image tag to $GIT_COMMIT"
-                        git push --set-upstream origin main
-                    '''
 
+                    withCredentials([sshUserPrivateKey(credentialsId: 'github-ssh-private-key', keyFileVariable: 'PK')]) {
+                        sh '''
+                            git config --global user.email "jenkins@jenkins.com"
+                            git config --global user.name "Jenkins CI/CD"
+                            git add valuesOverrides/values.yaml
+                            git commit -m "Update image tag to $GIT_COMMIT"
+                            git -c core.sshCommand="ssh -i $PK" push --set-upstream origin main
+                        '''
+                    }
                 }
             }
         }
