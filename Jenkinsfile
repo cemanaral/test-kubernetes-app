@@ -4,10 +4,10 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
+        stage('Docker build') {
             steps {
                 container('docker-build') {
-                  sh 'docker ps -a'
+                  sh 'printenv'
                 }
             }
         }
