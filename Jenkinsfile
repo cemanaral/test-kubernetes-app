@@ -7,11 +7,8 @@ pipeline {
         stage('Docker build') {
             steps {
                 container('docker-build') {
-                  sh '''
-                    IMAGE_TAG="cemanaral425383/test-python-app:$GIT_COMMIT"
-                    docker build -t $IMAGE_TAG .
-                    docker push $IMAGE_TAG
-                  '''
+                  def image = docker.build "cemanaral425383/test-python-app:${env.GIT_COMMIT}"
+                  image.push()
                 }
             }
         }
