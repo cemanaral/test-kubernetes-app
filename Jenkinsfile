@@ -26,7 +26,14 @@ image:
   tag: $GIT_COMMIT
 EOF
                     '''
-                    sh "cat valuesOverrides/values.yaml"
+                    sh '''
+                        git config --global user.email "jenkins@jenkins.com"
+                        git config --global user.name "Jenkins CI/CD"
+                        git add valuesOverrides/values.yaml
+                        git commit -m "Update image tag to $GIT_COMMIT"
+                        git push
+                    '''
+
                 }
             }
         }
