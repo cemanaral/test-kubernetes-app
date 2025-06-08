@@ -7,7 +7,7 @@ pipeline {
         stage('Hello') {
             steps {
                 container('docker-build') {
-                  sh 'docker ps'
+                  sh 'docker ps -a'
                 }
             }
         }
