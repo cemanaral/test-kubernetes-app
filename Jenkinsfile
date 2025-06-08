@@ -7,7 +7,11 @@ pipeline {
         stage('Docker build') {
             steps {
                 container('docker-build') {
-                  sh 'printenv'
+                  sh '''
+                    IMAGE_TAG="cemanaral425383/test-python-app:$GIT_COMMIT"
+                    docker build -t $IMAGE_TAG .
+                    docker push -t $IMAGE_TAG
+                  '''
                 }
             }
         }
