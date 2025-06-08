@@ -3,6 +3,9 @@ pipeline {
         label 'docker-build'   
     }
 
+    options {
+        disableConcurrentBuilds(abortPrevious: true)
+    }
     stages {
         stage('Docker build') {
             steps {
