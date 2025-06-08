@@ -8,8 +8,10 @@ pipeline {
             steps {
                 container('docker-build') {
                     script {
-                        def image = docker.build "cemanaral425383/test-python-app:${env.GIT_COMMIT}"
-                        image.push()
+                        docker.withRegistry('https://index.docker.io/v1/', 'docker-login') {
+                            def image = docker.build "cemanaral425383/test-python-app:${env.GIT_COMMIT}"
+                            image.push()
+                        }
                     }
                 }
             }
