@@ -21,7 +21,7 @@ pipeline {
                 script {
                     git branch: 'main', credentialsId: 'github-ssh-private-key', url: 'ssh://git@github.com/cemanaral/test-kubernetes-argocd.git'
                     sh '''
-                        cat << EOF > "valuesOverrides/values.yaml"
+                        cat << EOF > "valuesOverrides/app-values.yaml"
 image:
   tag: $GIT_COMMIT
 EOF
@@ -29,7 +29,7 @@ EOF
 
                     withCredentials([sshUserPrivateKey(credentialsId: 'github-ssh-private-key', keyFileVariable: 'PK')]) {
                         sh '''
-                            git config --global user.email "jenkins@jenkins.com"
+                            git config --global user.email "jenkins@cemanaral.com"
                             git config --global user.name "Jenkins CI/CD"
                             git add valuesOverrides/values.yaml
                             git commit -m "Update image tag to $GIT_COMMIT"
